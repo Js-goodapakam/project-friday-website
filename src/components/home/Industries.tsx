@@ -1,0 +1,56 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { EASE, viewportOnce, staggerContainer } from "../../lib/motion";
+
+const INDUSTRIES = [
+  "Healthcare",
+  "Education",
+  "Financial Services",
+  "Real Estate",
+  "Technology",
+  "Professional Services",
+];
+
+const chipVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+};
+
+export default function Industries() {
+  return (
+    <section className="px-5 py-24 sm:px-8 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, ease: EASE }}
+          className="max-w-xl"
+        >
+          <h2 className="text-[30px] font-semibold leading-tight tracking-tight text-ink sm:text-[36px]">
+            Built for the way your industry works.
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer(0.05, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mt-10 flex flex-wrap gap-3"
+        >
+          {INDUSTRIES.map((name) => (
+            <motion.div key={name} variants={chipVariants}>
+              <Link
+                to="/industries"
+                className="inline-flex items-center rounded-full border border-ink/[0.1] px-5 py-2.5 text-[14px] font-medium text-ink/70 transition-colors hover:border-[#0a84ff]/40 hover:text-[#078bd3]"
+              >
+                {name}
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

@@ -1,9 +1,16 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { EASE } from "../../lib/motion";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import HeroVisual from "./HeroVisual";
 
-const HEADLINE_LINES = ["Technology that", "moves with", "you."];
+const ROTATING_PHRASES = [
+  "Stronger Businesses",
+  "Smarter Teams",
+  "Happier Customers",
+  "Faster Growth",
+];
 
 export default function Hero() {
   return (
@@ -12,18 +19,29 @@ export default function Hero() {
         {/* Text column */}
         <div>
           <h1 className="text-[38px] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[52px] md:text-[58px]">
-            {HEADLINE_LINES.map((line, i) => (
-              <span key={line} className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: "115%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.75, ease: EASE, delay: 0.45 + i * 0.12 }}
-                >
-                  {line}
-                </motion.span>
-              </span>
-            ))}
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: "115%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.75, ease: EASE, delay: 0.45 }}
+              >
+                Smart Solutions
+              </motion.span>
+            </span>
+
+            <RotatingHeadlineLine words={ROTATING_PHRASES} initialDelay={0.57} />
+
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: "115%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.75, ease: EASE, delay: 0.69 }}
+              >
+                Thats Friday AI.
+              </motion.span>
+            </span>
           </h1>
 
           <motion.p
@@ -33,7 +51,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.95 }}
           >
             Friday connects your CRM, automation, communication, and AI into one
-            system — so your business runs like it has a second brain.
+            system - so your business runs like it has a second brain.
           </motion.p>
 
           <motion.div
@@ -69,5 +87,53 @@ export default function Hero() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function RotatingHeadlineLine({
+  words,
+  initialDelay,
+}: {
+  words: string[];
+  initialDelay: number;
+}) {
+  const reducedMotion = usePrefersReducedMotion();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (reducedMotion || words.length < 2) return;
+
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % words.length);
+    }, 2600);
+
+    return () => clearInterval(id);
+  }, [reducedMotion, words.length]);
+
+  return (
+    <span className="block overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={words[index]}
+          className="block text-[#0a84ff]"
+          initial={{
+            y: reducedMotion ? 0 : "115%",
+            opacity: reducedMotion ? 1 : 0,
+          }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{
+            y: reducedMotion ? 0 : "-115%",
+            opacity: reducedMotion ? 1 : 0,
+          }}
+          transition={{
+            duration: reducedMotion ? 0 : index === 0 ? 0.75 : 0.5,
+            ease: EASE,
+            delay: reducedMotion ? 0 : index === 0 ? initialDelay : 0,
+          }}
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   );
 }

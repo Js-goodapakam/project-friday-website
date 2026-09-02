@@ -29,7 +29,7 @@ export default function Footer() {
     >
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <img src={fridayLogo} alt="Friday Innovation" className="h-16 w-auto" draggable={false} />
+          <img src={fridayLogo} alt="Friday Innovation" className="h-[60px] w-auto" draggable={false} />
           <p className="mt-5 max-w-xs text-[14.5px] leading-relaxed text-ink/50">
             Friday connects your CRM, automation, communication, and AI into one
             system — so your business runs like it has a second brain.
@@ -75,7 +75,7 @@ export default function Footer() {
 
       <div className="mx-auto mt-14 flex max-w-7xl flex-col-reverse items-center justify-between gap-4 border-t border-ink/[0.06] pt-6 sm:flex-row">
         <span className="text-[13px] text-ink/40">
-          © {year} Friday Innovation. All rights reserved.
+          © {year} Friday Innovation Private Limited. All rights reserved.
         </span>
         <span className="text-[12.5px] font-medium uppercase tracking-wider text-ink/35">
           Innovate · Automate · Elevate

@@ -38,161 +38,94 @@ const NAV: NavEntry[] = [
     label: "Home",
     href: "/",
   },
-
   {
     type: "dropdown",
     label: "Solutions",
     groups: [
       {
         items: [
-          {
-            label: "CRM & Customer Management",
-            href: "/crm",
-          },
-          {
-            label: "Business Automation",
-            href: "/automation",
-          },
-          {
-            label: "Customer Communication",
-            href: "/communication",
-          },
-          {
-            label: "AI-Powered Business",
-            href: "/friday-ai",
-          },
-          {
-            label: "Digital Transformation",
-            href: "/digital-transformation",
-          },
+          { label: "CRM & Customer Management", href: "/crm" },
+          { label: "Business Automation", href: "/automation" },
+          { label: "Customer Communication", href: "/communication" },
+          { label: "AI-Powered Business", href: "/friday-ai" },
+          { label: "Digital Transformation", href: "/digital-transformation" },
         ],
       },
     ],
   },
-
   {
     type: "dropdown",
     label: "Services",
     groups: [
       {
         items: [
-          {
-            label: "Automation",
-            href: "/automation",
-          },
-          {
-            label: "Communication",
-            href: "/communication",
-          },
-          {
-            label: "Friday AI",
-            href: "/friday-ai",
-          },
+          { label: "Automation", href: "/automation" },
+          { label: "Communication", href: "/communication" },
+          { label: "Friday AI", href: "/friday-ai" },
         ],
       },
-
       {
         heading: "Digital Marketing",
-        headingHref: "/digital-marketing",
         items: [
-          {
-            label: "Branding",
-            href: "/digital-marketing/branding",
-          },
+          { label: "Branding", href: "/digital-marketing/branding" },
           {
             label: "Website Development",
             href: "/digital-marketing/website-development",
           },
-          {
-            label: "SEO",
-            href: "/digital-marketing/seo",
-          },
+          { label: "SEO", href: "/digital-marketing/seo" },
         ],
       },
     ],
   },
-
   {
     type: "link",
     label: "Industries",
     href: "/industries",
   },
-
-  {
-    type: "link",
-    label: "Vision",
-    href: "/vision",
-  },
-
   {
     type: "dropdown",
-    label: "Company",
+    label: "About Us",
     groups: [
       {
         items: [
-          {
-            label: "About Friday",
-            href: "/about",
-          },
-          {
-            label: "Resources",
-            href: "/resources",
-          },
-          {
-            label: "Contact",
-            href: "/contact",
-          },
+          { label: "Our Team", href: "/about/our-team" },
+          { label: "Careers", href: "/about/careers" },
+          { label: "Vision", href: "/vision" },
         ],
       },
     ],
   },
+  {
+    type: "link",
+    label: "Contact us",
+    href: "/contact",
+  },
 ];
 
 const logoVariants = {
-  hidden: {
-    opacity: 0,
-    x: -10,
-  },
-
+  hidden: { opacity: 0, x: -10 },
   show: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.5,
-      ease: EASE,
-    },
+    transition: { duration: 0.5, ease: EASE },
   },
 };
 
 const navItemVariants = {
-  hidden: {
-    opacity: 0,
-    y: -6,
-  },
-
+  hidden: { opacity: 0, y: -6 },
   show: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.4,
-      ease: EASE,
-    },
+    transition: { duration: 0.4, ease: EASE },
   },
 };
 
 const ctaVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.94,
-  },
-
+  hidden: { opacity: 0, scale: 0.94 },
   show: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.4,
-      ease: EASE,
-    },
+    transition: { duration: 0.4, ease: EASE },
   },
 };
 
@@ -204,9 +137,7 @@ function ChevronIcon({ open }: { open: boolean }) {
       viewBox="0 0 10 10"
       fill="none"
       className="transition-transform duration-200"
-      style={{
-        transform: open ? "rotate(180deg)" : "none",
-      }}
+      style={{ transform: open ? "rotate(180deg)" : "none" }}
       aria-hidden="true"
     >
       <path
@@ -220,43 +151,78 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
+function PhoneIcon() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function GlobeIcon() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path
+        d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export default function Header() {
   const { scrollY } = useScroll();
 
-  const paddingY = useTransform(
-    scrollY,
-    [0, 140],
-    [22, 12]
-  );
+const topOffset = useTransform(scrollY, [0, 1], [18, 0]);
 
-  const bgOpacity = useTransform(
-    scrollY,
-    [0, 140],
-    [0, 1]
-  );
+const headerWidth = useTransform(
+  scrollY,
+  [0, 1],
+  ["calc(100% - 32px)", "100%"]
+);
 
-  const blurPx = useTransform(
-    scrollY,
-    [0, 140],
-    [0, 14]
-  );
+const headerGap = useTransform(scrollY, [0, 1], [16, 0]);
 
-  const backdropFilter = useTransform(
-    blurPx,
-    (value) => `blur(${value}px)`
-  );
-
+const leftRadius = useTransform(scrollY, [0, 1], [16, 0]);
+const rightRadius = useTransform(scrollY, [0, 1], [16, 0]);
+const headerBgOpacity = useTransform(scrollY, [0, 80], [0, 1]);
+const pillShadow = useTransform(
+  scrollY,
+  [0, 80],
+  ["0 12px 35px rgba(7,26,51,0.08)", "0 0px 0px rgba(7,26,51,0)"]
+);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mobileOpenGroup, setMobileOpenGroup] =
-    useState<string | null>(null);
+  const [mobileOpenGroup, setMobileOpenGroup] = useState<string | null>(null);
+  const [openLabel, setOpenLabel] = useState<string | null>(null);
 
-  const [openLabel, setOpenLabel] =
-    useState<string | null>(null);
-
-  const closeTimer = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null);
-
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -267,267 +233,228 @@ export default function Header() {
 
   useEffect(() => {
     return () => {
-      if (closeTimer.current) {
-        clearTimeout(closeTimer.current);
-      }
+      if (closeTimer.current) clearTimeout(closeTimer.current);
     };
   }, []);
 
   const openMenu = (label: string) => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-    }
-
+    if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenLabel(label);
   };
 
   const scheduleClose = () => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-    }
-
-    closeTimer.current = setTimeout(() => {
-      setOpenLabel(null);
-    }, 150);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenLabel(null), 150);
   };
 
   return (
     <>
-      <motion.header
-        className="fixed left-0 right-0 top-0 z-50"
-        style={{
-          paddingTop: paddingY,
-          paddingBottom: paddingY,
-        }}
-      >
-        <motion.div
-          aria-hidden="true"
-          className="absolute inset-0 border-b border-ink/5"
-          style={{
-            backgroundColor: "#fbfcfdf2",
-            opacity: bgOpacity,
-            backdropFilter,
-          }}
-        />
+<motion.header
+  className="fixed left-0 right-0 top-0 z-50"
+  style={{ paddingTop: topOffset }}
+>
+  {/* Full-bleed white fill — merges the pill gaps into one solid bar on scroll */}
+  <motion.div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 -z-10 bg-white"
+    style={{ opacity: headerBgOpacity }}
+  />
 
-        <motion.div
-          variants={staggerContainer(0.07, 0.1)}
+<motion.div
+          variants={staggerContainer(0.06, 0.08)}
           initial="hidden"
           animate="show"
-          className="relative mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8"
+          className="mx-auto flex max-w-[1240px] items-center justify-between gap-20"
         >
-          <motion.div variants={logoVariants}>
+          {/* LEFT WHITE NAVIGATION CARD */}
+          <motion.div
+            variants={logoVariants}
+            style={{ borderRadius: leftRadius, boxShadow: pillShadow }}
+            className="flex min-h-[68px] flex-1 items-center gap-7 bg-white px-5 sm:px-6 lg:gap-8"
+          >
             <Link
               to="/"
-              className="block"
+              className="flex shrink-0 items-center"
               aria-label="Friday Home"
             >
               <img
                 src={fridayMark}
                 alt="Friday"
-                className="h-11 w-auto sm:h-[52px]"
+                className="h-14 w-auto sm:h-[40px]"
                 draggable={false}
               />
             </Link>
-          </motion.div>
 
-          <nav
-            className="hidden items-center gap-6 text-[14.5px] text-ink/70 md:flex"
-            aria-label="Primary navigation"
-            onMouseLeave={scheduleClose}
-          >
-            {NAV.map((entry) => {
-              if (entry.type === "link") {
+            <nav
+              className="hidden min-w-0 flex-1 items-center justify-center gap-5 text-[14px] font-medium text-[#172b4d] lg:flex xl:gap-7"
+              aria-label="Primary navigation"
+              onMouseLeave={scheduleClose}
+            >
+              {NAV.map((entry) => {
+                if (entry.type === "link") {
+                  return (
+                    <motion.div
+                      key={entry.label}
+                      variants={navItemVariants}
+                      className="shrink-0"
+                    >
+                      <Link
+                        to={entry.href}
+                        className="whitespace-nowrap transition-colors hover:text-[#078bd3]"
+                      >
+                        {entry.label}
+                      </Link>
+                    </motion.div>
+                  );
+                }
+
+                const isOpen = openLabel === entry.label;
+
                 return (
                   <motion.div
                     key={entry.label}
                     variants={navItemVariants}
+                    className="relative shrink-0"
+                    onMouseEnter={() => openMenu(entry.label)}
                   >
-                    <Link
-                      to={entry.href}
-                      className="transition-colors hover:text-ink"
+                    <button
+                      type="button"
+                      className="flex items-center gap-1 whitespace-nowrap text-[#172b4d] transition-colors hover:text-[#078bd3]"
+                      aria-expanded={isOpen}
+                      onClick={() =>
+                        setOpenLabel(isOpen ? null : entry.label)
+                      }
                     >
                       {entry.label}
-                    </Link>
-                  </motion.div>
-                );
-              }
+                      <ChevronIcon open={isOpen} />
+                    </button>
 
-              const isOpen =
-                openLabel === entry.label;
-
-              return (
-                <motion.div
-                  key={entry.label}
-                  variants={navItemVariants}
-                  className="relative"
-                  onMouseEnter={() =>
-                    openMenu(entry.label)
-                  }
-                >
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 transition-colors hover:text-ink"
-                    aria-expanded={isOpen}
-                    onClick={() =>
-                      setOpenLabel(
-                        isOpen ? null : entry.label
-                      )
-                    }
-                  >
-                    {entry.label}
-
-                    <ChevronIcon open={isOpen} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          y: -6,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        exit={{
-                          opacity: 0,
-                          y: -6,
-                        }}
-                        transition={{
-                          duration: 0.18,
-                          ease: EASE,
-                        }}
-                        onMouseEnter={() =>
-                          openMenu(entry.label)
-                        }
-                        className="absolute left-1/2 top-full mt-3 w-max -translate-x-1/2 rounded-2xl border border-ink/[0.06] bg-white p-5 shadow-[0_20px_50px_-20px_rgba(11,28,51,0.25)]"
-                      >
-                        <div className="flex gap-9">
-                          {entry.groups.map(
-                            (group, groupIndex) => (
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.18, ease: EASE }}
+                          onMouseEnter={() => openMenu(entry.label)}
+                          className="absolute left-1/2 top-full mt-3 w-max -translate-x-1/2 rounded-2xl border border-[#dceaf4] bg-white p-5 shadow-[0_20px_50px_-20px_rgba(7,26,51,0.28)]"
+                        >
+                          <div className="flex gap-9">
+                            {entry.groups.map((group, groupIndex) => (
                               <div
                                 key={groupIndex}
                                 className="min-w-[190px]"
                               >
-                                {group.heading &&
-                                  (group.headingHref ? (
-                                    <Link
-                                      to={group.headingHref}
-                                      className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-ink/40 hover:text-ink/60"
-                                    >
-                                      {group.heading}
-                                    </Link>
-                                  ) : (
-                                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-ink/40">
-                                      {group.heading}
-                                    </div>
-                                  ))}
+                                {group.heading && (
+                                  <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#078bd3]">
+                                    {group.heading}
+                                  </div>
+                                )}
 
                                 <ul className="space-y-2.5">
-                                  {group.items.map(
-                                    (item) => (
-                                      <li
-                                        key={item.href}
+                                  {group.items.map((item) => (
+                                    <li key={item.href}>
+                                      <Link
+                                        to={item.href}
+                                        className="block text-[14px] leading-snug text-[#52657f] transition-colors hover:text-[#078bd3]"
                                       >
-                                        <Link
-                                          to={item.href}
-                                          className="block text-[14px] leading-snug text-ink/70 transition-colors hover:text-ink"
-                                        >
-                                          {item.label}
-                                        </Link>
-                                      </li>
-                                    )
-                                  )}
+                                        {item.label}
+                                      </Link>
+                                    </li>
+                                  ))}
                                 </ul>
                               </div>
-                            )
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </nav>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </nav>
 
+            {/* MOBILE MENU BUTTON */}
+            <motion.button
+              variants={ctaVariants}
+              type="button"
+              className="ml-auto flex flex-col gap-[5px] lg:hidden"
+              aria-label={
+                menuOpen ? "Close navigation menu" : "Open navigation menu"
+              }
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span
+                className="h-[2px] w-6 bg-[#0b2748] transition-transform duration-300"
+                style={{
+                  transform: menuOpen
+                    ? "rotate(45deg) translateY(6px)"
+                    : "none",
+                }}
+              />
+              <span
+                className="h-[2px] w-6 bg-[#0b2748] transition-opacity duration-300"
+                style={{ opacity: menuOpen ? 0 : 1 }}
+              />
+              <span
+                className="h-[2px] w-6 bg-[#0b2748] transition-transform duration-300"
+                style={{
+                  transform: menuOpen
+                    ? "rotate(-45deg) translateY(-6px)"
+                    : "none",
+                }}
+              />
+            </motion.button>
+          </motion.div>
+
+          {/* RIGHT WHITE CONTACT CARD */}
           <motion.div
             variants={ctaVariants}
-            className="hidden md:block"
+            style={{ borderRadius: rightRadius, boxShadow: pillShadow }}
+            className="hidden min-h-[68px] shrink-0 items-center gap-5 bg-white px-5 lg:flex"
           >
+            <a
+              href="tel:+919999999999"
+              className="flex items-center gap-2 whitespace-nowrap text-[13.5px] font-medium text-[#172b4d] transition-colors hover:text-[#078bd3]"
+            >
+              <PhoneIcon />
+              <span>+91 99999 99999</span>
+            </a>
+
+            <span className="h-5 w-px bg-[#dce4ec]" aria-hidden="true" />
+
+            <button
+              type="button"
+              className="flex items-center gap-2 whitespace-nowrap text-[13.5px] font-medium text-[#172b4d] transition-colors hover:text-[#078bd3]"
+              aria-label="Language: English"
+            >
+              <GlobeIcon />
+              <span>Eng</span>
+            </button>
+
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-ink/85"
+              className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-[#0a84ff] px-4 py-3 text-[13.5px] font-semibold text-white transition-colors hover:bg-[#078bd3]"
             >
               Let&apos;s Talk
-
               <span className="transition-transform duration-200 group-hover:translate-x-0.5">
                 ↗
               </span>
             </Link>
           </motion.div>
-
-          <motion.button
-            variants={ctaVariants}
-            type="button"
-            className="flex flex-col gap-[5px] md:hidden"
-            aria-label={
-              menuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-            }
-            aria-expanded={menuOpen}
-            onClick={() =>
-              setMenuOpen((open) => !open)
-            }
-          >
-            <span
-              className="h-[2px] w-6 bg-ink transition-transform duration-300"
-              style={{
-                transform: menuOpen
-                  ? "rotate(45deg) translateY(6px)"
-                  : "none",
-              }}
-            />
-
-            <span
-              className="h-[2px] w-6 bg-ink transition-opacity duration-300"
-              style={{
-                opacity: menuOpen ? 0 : 1,
-              }}
-            />
-
-            <span
-              className="h-[2px] w-6 bg-ink transition-transform duration-300"
-              style={{
-                transform: menuOpen
-                  ? "rotate(-45deg) translateY(-6px)"
-                  : "none",
-              }}
-            />
-          </motion.button>
         </motion.div>
       </motion.header>
 
+      {/* MOBILE NAVIGATION */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.25,
-              ease: EASE,
-            }}
-            className="fixed inset-0 z-40 flex flex-col gap-1 overflow-y-auto bg-white/98 px-8 pb-10 pt-28 backdrop-blur-sm md:hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="fixed inset-x-4 top-[92px] z-40 max-h-[calc(100vh-108px)] overflow-y-auto rounded-2xl bg-white p-5 shadow-[0_20px_50px_rgba(7,26,51,0.18)] lg:hidden"
           >
             {NAV.map((entry) => {
               if (entry.type === "link") {
@@ -535,27 +462,24 @@ export default function Header() {
                   <Link
                     key={entry.label}
                     to={entry.href}
-                    className="border-b border-ink/5 py-4 text-[20px] font-medium text-ink"
-                    onClick={() =>
-                      setMenuOpen(false)
-                    }
+                    className="block border-b border-[#e5edf4] py-3.5 text-[17px] font-medium text-[#172b4d]"
+                    onClick={() => setMenuOpen(false)}
                   >
                     {entry.label}
                   </Link>
                 );
               }
 
-              const expanded =
-                mobileOpenGroup === entry.label;
+              const expanded = mobileOpenGroup === entry.label;
 
               return (
                 <div
                   key={entry.label}
-                  className="border-b border-ink/5"
+                  className="border-b border-[#e5edf4]"
                 >
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between py-4 text-[20px] font-medium text-ink"
+                    className="flex w-full items-center justify-between py-3.5 text-[17px] font-medium text-[#172b4d]"
                     aria-expanded={expanded}
                     onClick={() =>
                       setMobileOpenGroup(
@@ -564,64 +488,41 @@ export default function Header() {
                     }
                   >
                     {entry.label}
-
-                    <ChevronIcon
-                      open={expanded}
-                    />
+                    <ChevronIcon open={expanded} />
                   </button>
 
                   <AnimatePresence initial={false}>
                     {expanded && (
                       <motion.div
-                        initial={{
-                          height: 0,
-                          opacity: 0,
-                        }}
-                        animate={{
-                          height: "auto",
-                          opacity: 1,
-                        }}
-                        exit={{
-                          height: 0,
-                          opacity: 0,
-                        }}
-                        transition={{
-                          duration: 0.25,
-                          ease: EASE,
-                        }}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: EASE }}
                         className="overflow-hidden"
                       >
-                        {entry.groups.map(
-                          (group, groupIndex) => (
-                            <div
-                              key={groupIndex}
-                              className="pb-3 pl-2"
-                            >
-                              {group.heading && (
-                                <div className="mb-1 mt-2 text-[11px] font-semibold uppercase tracking-wider text-ink/35">
-                                  {group.heading}
-                                </div>
-                              )}
+                        {entry.groups.map((group, groupIndex) => (
+                          <div
+                            key={groupIndex}
+                            className="pb-2 pl-2"
+                          >
+                            {group.heading && (
+                              <div className="mb-1 mt-2 text-[11px] font-semibold uppercase tracking-wider text-[#078bd3]">
+                                {group.heading}
+                              </div>
+                            )}
 
-                              {group.items.map(
-                                (item) => (
-                                  <Link
-                                    key={item.href}
-                                    to={item.href}
-                                    className="block py-2 text-[16px] text-ink/65"
-                                    onClick={() =>
-                                      setMenuOpen(
-                                        false
-                                      )
-                                    }
-                                  >
-                                    {item.label}
-                                  </Link>
-                                )
-                              )}
-                            </div>
-                          )
-                        )}
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.href}
+                                to={item.href}
+                                className="block py-2 text-[15px] text-[#52657f] hover:text-[#078bd3]"
+                                onClick={() => setMenuOpen(false)}
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -629,15 +530,28 @@ export default function Header() {
               );
             })}
 
-            <Link
-              to="/contact"
-              className="mt-5 text-[20px] font-medium text-ink underline underline-offset-4"
-              onClick={() =>
-                setMenuOpen(false)
-              }
-            >
-              Let&apos;s Talk
-            </Link>
+            <div className="mt-5 space-y-4">
+              <a
+                href="tel:+919999999999"
+                className="flex items-center gap-2 text-[15px] font-medium text-[#172b4d]"
+              >
+                <PhoneIcon />
+                +91 99999 99999
+              </a>
+
+              <div className="flex items-center gap-2 text-[15px] font-medium text-[#172b4d]">
+                <GlobeIcon />
+                Eng
+              </div>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-[#0a84ff] px-5 py-3 text-[15px] font-semibold text-white"
+                onClick={() => setMenuOpen(false)}
+              >
+                Let&apos;s Talk ↗
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
