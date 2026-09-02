@@ -3,12 +3,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
+import CRM from "./pages/CRM";
 import ComingSoon from "./pages/ComingSoon";
 import { EASE } from "./lib/motion";
 
 function AnimatedRoutes() {
   const location = useLocation();
-
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -20,7 +20,7 @@ function AnimatedRoutes() {
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
-          <Route path="/crm" element={<ComingSoon title="Friday CRM" />} />
+          <Route path="/crm" element={<CRM />} />
           <Route path="/automation" element={<ComingSoon title="Automation" />} />
           <Route path="/communication" element={<ComingSoon title="Communication" />} />
           <Route path="/ai" element={<ComingSoon title="AI" />} />
