@@ -121,7 +121,7 @@ export default function ContactForm() {
 
           <div>
             <h3 className="text-[15px] font-semibold text-ink">Email</h3>
-            <p className="mt-1 text-[14.5px] text-ink/55">hello@fridayinnovation.com</p>
+            <p className="mt-1 text-[14.5px] text-ink/55">hello@fridaycore.com</p>
           </div>
 
           <div>
