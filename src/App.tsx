@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FridayChat from "./components/Chat/FridayChat";
+
 import Home from "./pages/Home";
 import CRM from "./pages/CRM";
 import Automation from "./pages/Automation";
@@ -17,6 +19,10 @@ import OurTeam from "./pages/OurTeam";
 import Careers from "./pages/Careers";
 import Vision from "./pages/Vision";
 import Contact from "./pages/Contact";
+
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+
 import NotFound from "./pages/NotFound";
 import { EASE } from "./lib/motion";
 
@@ -33,7 +39,10 @@ function AnimatedRoutes() {
         transition={{ duration: 0.28, ease: EASE }}
       >
         <Routes location={location}>
+          {/* Home */}
           <Route path="/" element={<Home />} />
+
+          {/* Solutions */}
           <Route path="/crm" element={<CRM />} />
           <Route path="/automation" element={<Automation />} />
           <Route path="/communication" element={<Communication />} />
@@ -42,6 +51,8 @@ function AnimatedRoutes() {
             path="/digital-transformation"
             element={<Transformation />}
           />
+
+          {/* Digital Marketing */}
           <Route
             path="/digital-marketing/branding"
             element={<Branding />}
@@ -51,11 +62,26 @@ function AnimatedRoutes() {
             element={<WebDev />}
           />
           <Route path="/digital-marketing/seo" element={<SEO />} />
+
+          {/* Industries */}
           <Route path="/industries" element={<IndustriesPage />} />
+
+          {/* About */}
           <Route path="/about/our-team" element={<OurTeam />} />
           <Route path="/about/careers" element={<Careers />} />
           <Route path="/vision" element={<Vision />} />
+
+          {/* Contact */}
           <Route path="/contact" element={<Contact />} />
+
+          {/* Legal */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
