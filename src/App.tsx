@@ -4,6 +4,10 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import CRM from "./pages/CRM";
+import Automation from "./pages/Automation";
+import Communication from "./pages/Communication";
+import AI from "./pages/AI";
+import Transformation from "./pages/Transformation";
 import ComingSoon from "./pages/ComingSoon";
 import { EASE } from "./lib/motion";
 
@@ -21,9 +25,10 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/crm" element={<CRM />} />
-          <Route path="/automation" element={<ComingSoon title="Automation" />} />
-          <Route path="/communication" element={<ComingSoon title="Communication" />} />
-          <Route path="/ai" element={<ComingSoon title="AI" />} />
+          <Route path="/automation" element={<Automation />} />
+          <Route path="/communication" element={<Communication />} />
+          <Route path="/friday-ai" element={<AI />} />
+          <Route path="/digital-transformation" element={<Transformation />} />
           <Route path="/industries" element={<ComingSoon title="Industries" />} />
           <Route path="/vision" element={<ComingSoon title="Vision" />} />
           <Route path="/contact" element={<ComingSoon title="Let's Talk" />} />
