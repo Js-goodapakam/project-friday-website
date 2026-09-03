@@ -15,7 +15,8 @@ import IndustriesPage from "./pages/Industries";
 import OurTeam from "./pages/OurTeam";
 import Careers from "./pages/Careers";
 import Vision from "./pages/Vision";
-import ComingSoon from "./pages/ComingSoon";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 import { EASE } from "./lib/motion";
 
 function AnimatedRoutes() {
@@ -43,7 +44,8 @@ function AnimatedRoutes() {
           <Route path="/about/our-team" element={<OurTeam />} />
           <Route path="/about/careers" element={<Careers />} />
           <Route path="/vision" element={<Vision />} />
-          <Route path="/contact" element={<ComingSoon title="Let's Talk" />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
