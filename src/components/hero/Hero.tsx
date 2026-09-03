@@ -30,7 +30,10 @@ export default function Hero() {
               </motion.span>
             </span>
 
-            <RotatingHeadlineLine words={ROTATING_PHRASES} initialDelay={0.57} />
+            <RotatingHeadlineLine
+              words={ROTATING_PHRASES}
+              initialDelay={0.57}
+            />
 
             <span className="block overflow-hidden">
               <motion.span
@@ -60,19 +63,26 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 1.1 }}
           >
+            {/* Explore Friday */}
             <Link
               to="/crm"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14.5px] font-medium text-white transition-colors hover:bg-ink/85"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14.5px] font-medium text-white transition-all duration-200 ease-out hover:scale-105 hover:bg-ink/90 hover:shadow-lg"
             >
               Explore Friday
-              <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                →
+              </span>
             </Link>
+
+            {/* See our vision */}
             <Link
               to="/vision"
-              className="group inline-flex items-center gap-2 text-[14.5px] font-medium text-ink/70 transition-colors hover:text-ink"
+              className="group inline-flex items-center gap-2 rounded-full px-3 py-2 text-[14.5px] font-medium text-ink/70 transition-all duration-200 ease-out hover:scale-105 hover:bg-white hover:text-ink hover:shadow-md"
             >
               See our vision
-              <span className="transition-transform duration-200 group-hover:translate-y-0.5">↓</span>
+              <span className="transition-transform duration-200 group-hover:translate-y-0.5">
+                ↓
+              </span>
             </Link>
           </motion.div>
         </div>
@@ -115,7 +125,7 @@ function RotatingHeadlineLine({
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
-          className="block text-[#0a84ff]"
+          className="block bg-gradient-to-r from-[#0A3D91] via-[#126FD1] to-[#1E90FF] bg-clip-text text-transparent"
           initial={{
             y: reducedMotion ? 0 : "115%",
             opacity: reducedMotion ? 1 : 0,

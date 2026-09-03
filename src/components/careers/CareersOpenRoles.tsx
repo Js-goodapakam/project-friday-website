@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { EASE, viewportOnce, staggerContainer } from "../../lib/motion";
 
 const ROLES = [
-  { title: "Frontend Engineer", type: "Full-time · Remote" },
-  { title: "Backend Engineer", type: "Full-time · Remote" },
-  { title: "Product Designer", type: "Full-time · Remote" },
   { title: "Customer Success Associate", type: "Full-time · Remote" },
 ];
 

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import FridayChat from "./components/chat/FridayChat";
 import Home from "./pages/Home";
 import CRM from "./pages/CRM";
 import Automation from "./pages/Automation";
@@ -21,6 +22,7 @@ import { EASE } from "./lib/motion";
 
 function AnimatedRoutes() {
   const location = useLocation();
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -36,9 +38,18 @@ function AnimatedRoutes() {
           <Route path="/automation" element={<Automation />} />
           <Route path="/communication" element={<Communication />} />
           <Route path="/friday-ai" element={<AI />} />
-          <Route path="/digital-transformation" element={<Transformation />} />
-          <Route path="/digital-marketing/branding" element={<Branding />} />
-          <Route path="/digital-marketing/website-development" element={<WebDev />} />
+          <Route
+            path="/digital-transformation"
+            element={<Transformation />}
+          />
+          <Route
+            path="/digital-marketing/branding"
+            element={<Branding />}
+          />
+          <Route
+            path="/digital-marketing/website-development"
+            element={<WebDev />}
+          />
           <Route path="/digital-marketing/seo" element={<SEO />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/about/our-team" element={<OurTeam />} />
@@ -54,10 +65,17 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      basename={
+        window.location.pathname.startsWith("/project-friday-website")
+          ? "/project-friday-website"
+          : "/"
+      }
+    >
       <Header />
       <AnimatedRoutes />
       <Footer />
+      <FridayChat />
     </BrowserRouter>
   );
 }

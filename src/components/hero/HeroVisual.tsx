@@ -25,6 +25,10 @@ const iconProps = {
   strokeLinejoin: "round" as const,
 };
 
+/* =========================================================
+   NORMAL ICONS
+   ========================================================= */
+
 const CRMIcon = (
   <svg {...iconProps}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -68,17 +72,69 @@ const SEOIcon = (
   </svg>
 );
 
+/* =========================================================
+   TECH CARDS
+   ========================================================= */
+
 const TECH_CARDS: TechCardDef[] = [
-  { label: "CRM", sub: "Relationships", pos: "top-[6%] left-[2%]", depth: 14, to: "/crm", icon: CRMIcon },
-  { label: "Automation", sub: "Workflows", pos: "top-[14%] right-[0%]", depth: 20, to: "/automation", icon: AutomationIcon },
-  { label: "Communication", sub: "Connected", pos: "bottom-[16%] left-[0%]", depth: 17, to: "/communication", icon: CommunicationIcon },
-  { label: "AI", sub: "Intelligence", pos: "bottom-[6%] right-[6%]", depth: 24, to: "/friday-ai", icon: AIIcon },
-  { label: "Transformation", sub: "Modernize", pos: "top-[42%] left-[-6%]", depth: 12, to: "/digital-transformation", icon: TransformationIcon },
-  { label: "SEO", sub: "Visibility", pos: "top-[46%] right-[-6%]", depth: 18, to: "/digital-marketing/seo", icon: SEOIcon },
+  {
+    label: "CRM",
+    sub: "Relationships",
+    pos: "top-[6%] left-[2%]",
+    depth: 14,
+    to: "/crm",
+    icon: CRMIcon,
+  },
+  {
+    label: "Automation",
+    sub: "Workflows",
+    pos: "top-[14%] right-[0%]",
+    depth: 20,
+    to: "/automation",
+    icon: AutomationIcon,
+  },
+  {
+    label: "Communication",
+    sub: "Connected",
+    pos: "bottom-[16%] left-[0%]",
+    depth: 17,
+    to: "/communication",
+    icon: CommunicationIcon,
+  },
+  {
+    label: "AI",
+    sub: "Intelligence",
+    pos: "bottom-[6%] right-[6%]",
+    depth: 24,
+    to: "/friday-ai",
+    icon: AIIcon,
+  },
+  {
+    label: "Transformation",
+    sub: "Modernize",
+    pos: "top-[42%] left-[-16%]",
+    depth: 12,
+    to: "/digital-transformation",
+    icon: TransformationIcon,
+  },
+  {
+    label: "SEO",
+    sub: "Visibility",
+    pos: "top-[46%] right-[-6%]",
+    depth: 18,
+    to: "/digital-marketing/seo",
+    icon: SEOIcon,
+  },
 ];
 
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
 export default function HeroVisual() {
-  const { ref, x, y, handleMouseMove, handleMouseLeave } = useMouseParallax();
+  const { ref, x, y, handleMouseMove, handleMouseLeave } =
+    useMouseParallax();
+
   const reducedMotion = usePrefersReducedMotion();
 
   return (
@@ -118,11 +174,25 @@ export default function HeroVisual() {
         }}
       />
 
-      {/* Friday AI Bot */}
+      {/* =====================================================
+          FRIDAY AI BOT
+          ===================================================== */}
       <motion.div
         id="friday-character-slot"
-        className="absolute inset-[18%] flex items-center justify-center"
+        className="group/bot absolute inset-[18%] flex cursor-pointer items-center justify-center"
         initial={{ opacity: 0, scale: 0.92, y: 12 }}
+        role="button"
+        tabIndex={0}
+        aria-label="Open Friday AI chat"
+        onClick={() => {
+          window.dispatchEvent(new CustomEvent("friday:open-chat"));
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            window.dispatchEvent(new CustomEvent("friday:open-chat"));
+          }
+        }}
         animate={{
           opacity: 1,
           scale: 1,
@@ -151,11 +221,85 @@ export default function HeroVisual() {
               },
         }}
       >
-        <img
-          src={aiBot}
-          alt="Friday AI Assistant"
-          className="relative z-10 h-auto w-[72%] max-w-[260px] object-contain drop-shadow-[0_18px_30px_rgba(11,28,51,0.16)]"
-        />
+        {/* Friday AI Message */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -right-2
+            top-[8%]
+            z-30
+            w-[190px]
+            translate-x-4
+            rounded-2xl
+            border border-ink/[0.08]
+            bg-white/95
+            px-4
+            py-3
+            text-[12px]
+            leading-relaxed
+            text-ink
+            opacity-0
+            shadow-[0_12px_30px_-12px_rgba(11,28,51,0.25)]
+            backdrop-blur-md
+            transition-all
+            duration-300
+            ease-out
+            group-hover/bot:translate-x-0
+            group-hover/bot:opacity-100
+          "
+        >
+          <div className="font-medium">
+            Hi, I'm Friday! 👋
+          </div>
+
+          <div className="mt-0.5 text-ink/55">
+            How can I help you?
+          </div>
+
+          {/* Speech bubble tail */}
+          <div
+            className="
+              absolute
+              left-5
+              -bottom-1.5
+              h-3
+              w-3
+              rotate-45
+              border-b
+              border-r
+              border-ink/[0.08]
+              bg-white
+            "
+          />
+        </div>
+
+        {/* Friday Bot */}
+        <div
+          className="
+            cursor-pointer
+            transition-transform
+            duration-300
+            ease-out
+            group-hover/bot:scale-105
+          "
+        >
+          <img
+            src={aiBot}
+            alt="Friday AI Assistant"
+            className="
+              relative
+              z-10
+              h-auto
+              w-[72%]
+              max-w-[260px]
+              origin-bottom
+              object-contain
+              drop-shadow-[0_18px_30px_rgba(11,28,51,0.16)]
+              motion-safe:group-hover/bot:animate-[friday-bot-wave_0.9s_ease-in-out]
+            "
+          />
+        </div>
       </motion.div>
 
       {/* Floating tech cards */}
@@ -175,6 +319,7 @@ export default function HeroVisual() {
           from {
             transform: rotate(0deg);
           }
+
           to {
             transform: rotate(360deg);
           }
@@ -184,6 +329,7 @@ export default function HeroVisual() {
           from {
             transform: rotate(0deg);
           }
+
           to {
             transform: rotate(-360deg);
           }
@@ -198,10 +344,155 @@ export default function HeroVisual() {
             transform: translateY(-6px);
           }
         }
+
+        @keyframes friday-bot-wave {
+          0% {
+            transform: rotate(0deg) translateY(0);
+          }
+
+          12% {
+            transform: rotate(-3deg) translateY(-1px);
+          }
+
+          25% {
+            transform: rotate(3deg) translateY(-3px);
+          }
+
+          38% {
+            transform: rotate(-4deg) translateY(-2px);
+          }
+
+          51% {
+            transform: rotate(4deg) translateY(-3px);
+          }
+
+          64% {
+            transform: rotate(-3deg) translateY(-2px);
+          }
+
+          77% {
+            transform: rotate(2deg) translateY(-1px);
+          }
+
+          90% {
+            transform: rotate(-1deg) translateY(0);
+          }
+
+          100% {
+            transform: rotate(0deg) translateY(0);
+          }
+        }
+
+        @keyframes friday-automation-spin {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes friday-transformation-rotate {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes friday-ai-spark {
+          0% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 0 rgba(7,139,211,0));
+          }
+
+          25% {
+            transform: scale(1.15) rotate(8deg);
+            filter: drop-shadow(0 0 4px rgba(7,139,211,0.35));
+          }
+
+          45% {
+            transform: scale(1.28) rotate(-8deg);
+            filter: drop-shadow(0 0 9px rgba(7,139,211,0.65));
+          }
+
+          65% {
+            transform: scale(1.16) rotate(7deg);
+            filter: drop-shadow(0 0 5px rgba(7,139,211,0.45));
+          }
+
+          100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 0 rgba(7,139,211,0));
+          }
+        }
+
+        @keyframes friday-paper-bird {
+          0% {
+            opacity: 0;
+            transform: translateX(-2px) translateY(2px) rotate(0deg) scale(0.7);
+          }
+
+          20% {
+            opacity: 1;
+            transform: translateX(0) translateY(0) rotate(-8deg) scale(1);
+          }
+
+          55% {
+            opacity: 1;
+            transform: translateX(12px) translateY(-8px) rotate(-12deg) scale(1.05);
+          }
+
+          100% {
+            opacity: 0;
+            transform: translateX(32px) translateY(-22px) rotate(-18deg) scale(0.85);
+          }
+        }
+
+        @keyframes friday-crm-left {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-4px);
+          }
+        }
+
+        @keyframes friday-crm-right {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(4px);
+          }
+        }
+
+        @keyframes friday-seo-zoom {
+          0% {
+            transform: scale(1);
+          }
+
+          50% {
+            transform: scale(1.32);
+          }
+
+          100% {
+            transform: scale(1.12);
+          }
+        }
       `}</style>
     </div>
   );
 }
+
+/* =========================================================
+   FLOATING CARD
+   ========================================================= */
 
 function FloatingCard({
   card,
@@ -240,7 +531,7 @@ function FloatingCard({
     >
       <Link
         to={card.to}
-        className="flex items-center gap-2.5 rounded-2xl border border-ink/[0.06] bg-white/90 px-4 py-3 shadow-[0_8px_24px_-12px_rgba(11,28,51,0.18)] backdrop-blur-sm transition-transform duration-200 hover:scale-[1.04] hover:shadow-[0_12px_28px_-10px_rgba(11,28,51,0.24)]"
+        className="group flex items-center gap-2.5 rounded-2xl border border-ink/[0.06] bg-white/90 px-4 py-3 shadow-[0_8px_24px_-12px_rgba(11,28,51,0.18)] backdrop-blur-sm transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_12px_28px_-10px_rgba(11,28,51,0.24)]"
         style={{
           animation: reducedMotion
             ? "none"
@@ -249,10 +540,127 @@ function FloatingCard({
               }s infinite`,
         }}
       >
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#078bd3]/10">
-          {card.icon}
+        {/* =================================================
+            ICON AREA
+           ================================================= */}
+        <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#078bd3]/10">
+
+          {/* =================================================
+              CRM
+             ================================================= */}
+          {card.label === "CRM" ? (
+            <div className="relative flex h-5 w-6 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-125">
+              {/* Left person */}
+              <svg
+                width="11"
+                height="18"
+                viewBox="0 0 12 20"
+                fill="none"
+                stroke="#078bd3"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute left-[2px] transition-transform duration-300 ease-out group-hover:-translate-x-[3px]"
+              >
+                <circle cx="6" cy="4" r="3" />
+                <path d="M1.5 19v-2.5a4.5 4.5 0 0 1 9 0V19" />
+              </svg>
+
+              {/* Right person */}
+              <svg
+                width="11"
+                height="18"
+                viewBox="0 0 12 20"
+                fill="none"
+                stroke="#078bd3"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute right-[2px] transition-transform duration-300 ease-out group-hover:translate-x-[3px]"
+              >
+                <circle cx="6" cy="4" r="3" />
+                <path d="M1.5 19v-2.5a4.5 4.5 0 0 1 9 0V19" />
+              </svg>
+            </div>
+          ) : null}
+
+          {/* =================================================
+              TRANSFORMATION
+             ================================================= */}
+          {card.label === "Transformation" ? (
+            <div className="transition-transform duration-300 ease-out group-hover:scale-125">
+              <div className="motion-safe:group-hover:animate-[friday-transformation-rotate_0.8s_ease-in-out]">
+                {card.icon}
+              </div>
+            </div>
+          ) : null}
+
+          {/* =================================================
+              COMMUNICATION
+             ================================================= */}
+          {card.label === "Communication" ? (
+            <>
+              {/* Original communication icon */}
+              <div className="transition-transform duration-300 ease-out group-hover:scale-125">
+                <div className="transition-opacity duration-200 motion-safe:group-hover:opacity-0">
+                  {card.icon}
+                </div>
+              </div>
+
+              {/* Paper bird */}
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#078bd3"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="pointer-events-none absolute opacity-0 motion-safe:group-hover:animate-[friday-paper-bird_0.9s_ease-out_forwards]"
+              >
+                <path d="M3 11.5 21 3l-7.5 18-3.5-7-7-2.5Z" />
+                <path d="m10 14 4-4" />
+                <path d="m10 14 4 7" />
+              </svg>
+            </>
+          ) : null}
+
+          {/* =================================================
+              AI
+             ================================================= */}
+          {card.label === "AI" ? (
+            <div className="transition-transform duration-300 ease-out group-hover:scale-125">
+              <div className="motion-safe:group-hover:animate-[friday-ai-spark_0.65s_ease-in-out]">
+                {card.icon}
+              </div>
+            </div>
+          ) : null}
+
+          {/* =================================================
+              SEO
+             ================================================= */}
+          {card.label === "SEO" ? (
+            <div className="transition-transform duration-300 ease-out group-hover:scale-125">
+              <div className="motion-safe:group-hover:animate-[friday-seo-zoom_0.65s_ease-out]">
+                {card.icon}
+              </div>
+            </div>
+          ) : null}
+
+          {/* =================================================
+              AUTOMATION
+             ================================================= */}
+          {card.label === "Automation" ? (
+            <div className="transition-transform duration-300 ease-out group-hover:scale-125">
+              <div className="motion-safe:group-hover:animate-[friday-automation-spin_0.8s_ease-in-out]">
+                {card.icon}
+              </div>
+            </div>
+          ) : null}
         </div>
 
+        {/* Card text */}
         <div>
           <div className="text-[13px] font-semibold text-ink">
             {card.label}

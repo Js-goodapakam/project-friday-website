@@ -13,7 +13,11 @@ const INDUSTRIES = [
 
 const chipVariants = {
   hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: EASE },
+  },
 };
 
 export default function Industries() {
@@ -43,7 +47,19 @@ export default function Industries() {
             <motion.div key={name} variants={chipVariants}>
               <Link
                 to="/industries"
-                className="inline-flex items-center rounded-full border border-ink/[0.1] px-5 py-2.5 text-[14px] font-medium text-ink/70 transition-colors hover:border-[#0a84ff]/40 hover:text-[#078bd3]"
+                className="
+                  inline-flex items-center rounded-full
+                  border border-ink/[0.1]
+                  bg-white
+                  px-5 py-2.5
+                  text-[14px] font-medium text-ink/70
+                  transition-all duration-200 ease-out
+                  hover:scale-105
+                  hover:border-ink
+                  hover:bg-ink
+                  hover:text-white
+                  hover:shadow-lg
+                "
               >
                 {name}
               </Link>
