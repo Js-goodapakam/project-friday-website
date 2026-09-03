@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import FridayChat from "./components/chat/FridayChat";
+import FridayChat from "./components/Chat/FridayChat";
 import Home from "./pages/Home";
 import CRM from "./pages/CRM";
 import Automation from "./pages/Automation";
