@@ -1,7 +1,7 @@
-import CommunicationHero from "../components/communication/CommunicationHero";
-import CommunicationFeatures from "../components/communication/CommunicationFeatures";
-import CommunicationWorkflow from "../components/communication/CommunicationWorkflow";
-import CommunicationCTA from "../components/communication/CommunicationCTA";
+import CommunicationHero from "../components/Communication/CommunicationHero";
+import CommunicationFeatures from "../components/Communication/CommunicationFeatures";
+import CommunicationWorkflow from "../components/Communication/CommunicationWorkflow";
+import CommunicationCTA from "../components/Communication/CommunicationCTA";
 
 export default function Communication() {
   return (

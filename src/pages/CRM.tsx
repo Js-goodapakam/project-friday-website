@@ -1,7 +1,7 @@
-import CRMHero from "../components/crm/CRMHero";
-import CRMFeatures from "../components/crm/CRMFeatures";
-import CRMWorkflow from "../components/crm/CRMWorkflow";
-import CRMCTA from "../components/crm/CRMCTA";
+import CRMHero from "../components/Crm/CRMHero";
+import CRMFeatures from "../components/Crm/CRMFeatures";
+import CRMWorkflow from "../components/Crm/CRMWorkflow";
+import CRMCTA from "../components/Crm/CRMCTA";
 
 export default function CRM() {
   return (
