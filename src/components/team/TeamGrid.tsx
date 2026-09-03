@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { EASE, viewportOnce, staggerContainer } from "../../lib/motion";
 
 const TEAM = [
-  { name: "Team Member", role: "Co-Founder & CEO" },
-  { name: "Team Member", role: "Co-Founder & CTO" },
+  { name: "Bharath G", role: "Co-Founder & CEO" },
+  { name: "Sasi Kumar T", role: "Co-Founder & CTO" },
 ];
 
 const cardVariants = {
