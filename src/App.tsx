@@ -8,6 +8,13 @@ import Automation from "./pages/Automation";
 import Communication from "./pages/Communication";
 import AI from "./pages/AI";
 import Transformation from "./pages/Transformation";
+import Branding from "./pages/Branding";
+import WebDev from "./pages/WebDev";
+import SEO from "./pages/SEO";
+import IndustriesPage from "./pages/Industries";
+import OurTeam from "./pages/OurTeam";
+import Careers from "./pages/Careers";
+import Vision from "./pages/Vision";
 import ComingSoon from "./pages/ComingSoon";
 import { EASE } from "./lib/motion";
 
@@ -29,8 +36,13 @@ function AnimatedRoutes() {
           <Route path="/communication" element={<Communication />} />
           <Route path="/friday-ai" element={<AI />} />
           <Route path="/digital-transformation" element={<Transformation />} />
-          <Route path="/industries" element={<ComingSoon title="Industries" />} />
-          <Route path="/vision" element={<ComingSoon title="Vision" />} />
+          <Route path="/digital-marketing/branding" element={<Branding />} />
+          <Route path="/digital-marketing/website-development" element={<WebDev />} />
+          <Route path="/digital-marketing/seo" element={<SEO />} />
+          <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/about/our-team" element={<OurTeam />} />
+          <Route path="/about/careers" element={<Careers />} />
+          <Route path="/vision" element={<Vision />} />
           <Route path="/contact" element={<ComingSoon title="Let's Talk" />} />
         </Routes>
       </motion.div>

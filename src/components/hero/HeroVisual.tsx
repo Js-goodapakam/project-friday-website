@@ -1,4 +1,5 @@
 import { motion, MotionValue, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useMouseParallax } from "../../hooks/useMouseParallax";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { EASE } from "../../lib/motion";
@@ -9,13 +10,71 @@ interface TechCardDef {
   sub: string;
   pos: string;
   depth: number;
+  to: string;
+  icon: JSX.Element;
 }
 
+const iconProps = {
+  width: 16,
+  height: 16,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "#078bd3",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+const CRMIcon = (
+  <svg {...iconProps}>
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
+const AutomationIcon = (
+  <svg {...iconProps}>
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+  </svg>
+);
+
+const CommunicationIcon = (
+  <svg {...iconProps}>
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+
+const AIIcon = (
+  <svg {...iconProps}>
+    <path d="M12 3v3M12 18v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M3 12h3M18 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+    <circle cx="12" cy="12" r="4" />
+  </svg>
+);
+
+const TransformationIcon = (
+  <svg {...iconProps}>
+    <polyline points="23 4 23 10 17 10" />
+    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+  </svg>
+);
+
+const SEOIcon = (
+  <svg {...iconProps}>
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
 const TECH_CARDS: TechCardDef[] = [
-  { label: "CRM", sub: "Relationships", pos: "top-[6%] left-[2%]", depth: 14 },
-  { label: "Automation", sub: "Workflows", pos: "top-[14%] right-[0%]", depth: 20 },
-  { label: "Communication", sub: "Connected", pos: "bottom-[16%] left-[0%]", depth: 17 },
-  { label: "AI", sub: "Intelligence", pos: "bottom-[6%] right-[6%]", depth: 24 },
+  { label: "CRM", sub: "Relationships", pos: "top-[6%] left-[2%]", depth: 14, to: "/crm", icon: CRMIcon },
+  { label: "Automation", sub: "Workflows", pos: "top-[14%] right-[0%]", depth: 20, to: "/automation", icon: AutomationIcon },
+  { label: "Communication", sub: "Connected", pos: "bottom-[16%] left-[0%]", depth: 17, to: "/communication", icon: CommunicationIcon },
+  { label: "AI", sub: "Intelligence", pos: "bottom-[6%] right-[6%]", depth: 24, to: "/friday-ai", icon: AIIcon },
+  { label: "Transformation", sub: "Modernize", pos: "top-[42%] left-[-6%]", depth: 12, to: "/digital-transformation", icon: TransformationIcon },
+  { label: "SEO", sub: "Visibility", pos: "top-[46%] right-[-6%]", depth: 18, to: "/digital-marketing/seo", icon: SEOIcon },
 ];
 
 export default function HeroVisual() {
@@ -179,8 +238,9 @@ function FloatingCard({
             }
       }
     >
-      <div
-        className="rounded-2xl border border-ink/[0.06] bg-white/90 px-4 py-3 shadow-[0_8px_24px_-12px_rgba(11,28,51,0.18)] backdrop-blur-sm"
+      <Link
+        to={card.to}
+        className="flex items-center gap-2.5 rounded-2xl border border-ink/[0.06] bg-white/90 px-4 py-3 shadow-[0_8px_24px_-12px_rgba(11,28,51,0.18)] backdrop-blur-sm transition-transform duration-200 hover:scale-[1.04] hover:shadow-[0_12px_28px_-10px_rgba(11,28,51,0.24)]"
         style={{
           animation: reducedMotion
             ? "none"
@@ -189,14 +249,20 @@ function FloatingCard({
               }s infinite`,
         }}
       >
-        <div className="text-[13px] font-semibold text-ink">
-          {card.label}
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#078bd3]/10">
+          {card.icon}
         </div>
 
-        <div className="text-[11.5px] text-ink/50">
-          {card.sub}
+        <div>
+          <div className="text-[13px] font-semibold text-ink">
+            {card.label}
+          </div>
+
+          <div className="text-[11.5px] text-ink/50">
+            {card.sub}
+          </div>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 }
