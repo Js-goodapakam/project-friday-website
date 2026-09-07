@@ -39,6 +39,7 @@ function AnimatedRoutes() {
         transition={{ duration: 0.28, ease: EASE }}
       >
         <Routes location={location}>
+
           {/* Home */}
           <Route path="/" element={<Home />} />
 
@@ -61,7 +62,10 @@ function AnimatedRoutes() {
             path="/digital-marketing/website-development"
             element={<WebDev />}
           />
-          <Route path="/digital-marketing/seo" element={<SEO />} />
+          <Route
+            path="/digital-marketing/seo"
+            element={<SEO />}
+          />
 
           {/* Industries */}
           <Route path="/industries" element={<IndustriesPage />} />
@@ -75,7 +79,10 @@ function AnimatedRoutes() {
           <Route path="/contact" element={<Contact />} />
 
           {/* Legal */}
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route
+            path="/privacy-policy"
+            element={<PrivacyPolicy />}
+          />
           <Route
             path="/terms-and-conditions"
             element={<TermsAndConditions />}
@@ -83,6 +90,7 @@ function AnimatedRoutes() {
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </motion.div>
     </AnimatePresence>
