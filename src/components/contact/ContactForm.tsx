@@ -6,9 +6,16 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
@@ -16,6 +23,7 @@ export default function ContactForm() {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+
     const formData = new FormData(e.currentTarget);
 
     try {
@@ -25,11 +33,16 @@ export default function ContactForm() {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Form submission failed");
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
       setSubmitted(true);
       setForm({ name: "", email: "", company: "", message: "" });
     } catch {
-      setError("We couldn't send your message. Please try again or email us directly.");
+      setError(
+        "We couldn't send your message. Please try again or email us directly."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -65,13 +78,18 @@ export default function ContactForm() {
                 className="hidden"
                 aria-hidden="true"
               />
+
               <div>
-                <label htmlFor="contact-name" className="text-[13.5px] font-medium text-ink/70">
+                <label
+                  htmlFor="contact-name"
+                  className="text-[13.5px] font-medium text-ink/70"
+                >
                   Name
                 </label>
                 <input
                   required
                   id="contact-name"
+                  type="text"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
@@ -81,7 +99,10 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="contact-email" className="text-[13.5px] font-medium text-ink/70">
+                <label
+                  htmlFor="contact-email"
+                  className="text-[13.5px] font-medium text-ink/70"
+                >
                   Email
                 </label>
                 <input
@@ -97,12 +118,15 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="contact-company" className="text-[13.5px] font-medium text-ink/70">
+                <label
+                  htmlFor="contact-company"
+                  className="text-[13.5px] font-medium text-ink/70"
+                >
                   Company
                 </label>
                 <input
-                  name="company"
                   id="contact-company"
+                  name="company"
                   value={form.company}
                   onChange={handleChange}
                   className="mt-1.5 w-full rounded-xl border border-[#dceaf4] px-4 py-2.5 text-[14.5px] text-ink outline-none transition-colors focus:border-[#078bd3]"
@@ -111,7 +135,10 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="text-[13.5px] font-medium text-ink/70">
+                <label
+                  htmlFor="contact-message"
+                  className="text-[13.5px] font-medium text-ink/70"
+                >
                   Message
                 </label>
                 <textarea
@@ -127,16 +154,20 @@ export default function ContactForm() {
               </div>
 
               {error && (
-                <p role="alert" className="text-[13px] text-red-600">{error}</p>
+                <p role="alert" className="text-[13px] text-red-600">
+                  {error}
+                </p>
               )}
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14.5px] font-medium text-white transition-colors hover:bg-ink/85"
+                className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14.5px] font-medium text-white transition-colors hover:bg-ink/85 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting ? "Sending…" : "Send message"}
-                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                  →
+                </span>
               </button>
             </form>
           )}
